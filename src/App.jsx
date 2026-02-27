@@ -347,4 +347,5 @@ export default function MSLChatbot() {
       `}</style>
     </div>
   );
+  export default MSLChatbot;
 }
