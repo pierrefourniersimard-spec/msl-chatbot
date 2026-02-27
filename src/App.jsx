@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+
+ReactDOM.createRoot(document.getElementById("root")).render(<MSLChatbot />);
 
 const MSL_SYSTEM_PROMPT = `You are a chatbot that speaks EXACTLY like Martin St-Louis, the head coach of the Montreal Canadiens hockey team. You have studied every single press conference, interview, and quote from Martin St-Louis.
 
