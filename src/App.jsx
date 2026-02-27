@@ -136,20 +136,15 @@ export default function MSLChatbot() {
     setLoading(true);
 
     try {
-   const response = await fetch("https://api.anthropic.com/v1/messages", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "x-api-key": import.meta.env.VITE_ANTHROPIC_KEY,
-    "anthropic-version": "2023-06-01",
-    "anthropic-dangerous-direct-browser-access": "true",
-  },
-  body: JSON.stringify({
-    model: "claude-3-5-sonnet-20241022",
-    max_tokens: 1000,
-    system: MSL_SYSTEM_PROMPT,
-    messages: newMessages.map((m) => ({ role: m.role, content: m.content })),
-  }),
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1000,
+          system: MSL_SYSTEM_PROMPT,
+          messages: newMessages.map((m) => ({ role: m.role, content: m.content })),
+        }),
       });
       const data = await response.json();
       const reply = data.content?.[0]?.text || "...";
@@ -347,7 +342,7 @@ export default function MSLChatbot() {
       `}</style>
     </div>
   );
-  export default MSLChatbot;
 }
+
 import ReactDOM from "react-dom/client";
 ReactDOM.createRoot(document.getElementById("root")).render(<MSLChatbot />);
